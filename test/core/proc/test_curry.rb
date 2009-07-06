@@ -23,7 +23,7 @@ class TestProcCurry < Test::Unit::TestCase
   
   def test_inclass_scope
     baz = Class.new
-    foo = lambda {|y, x| puts x + " " + y}.curry['yeah']
+    foo = lambda {|y, x| x + " " + y}.curry['yeah']
     baz.__send__(:define_method, 'foo', foo)
     assert_equal('boo yeah',baz.new.foo('boo'))
   end
